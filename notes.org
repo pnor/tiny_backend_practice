@@ -1,0 +1,31 @@
+#+title: layout of this project
+
+* Overall goal
+tracking receipts for customers in a made up store
+this project is to make me more comfortable with databases beyond the most trivial of cases
+
+
+* API endpoints
+** TODO [post] Create a customer
+** TODO [post] Create a Good
+** TODO [post] Say a customer bought a good
+** TODO [get] Get customer info
+** TODO [get] Get good info
+** TODO [get] Get receipt trail for customer (all things customer bought)
+
+
+* Database Design
+** Customer
+name : string
+age : number
+pruchased goods : ???
+
+** Good
+name : string
+price : number
+
+** Receipt table
+id : <id>
+good bought
+user who ought
+when it was bought

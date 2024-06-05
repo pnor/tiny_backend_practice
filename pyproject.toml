@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "receipt-tracking"
+version = "0.1.0"
+description = ""
+authors = ["pnor <pnoreggio@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+sqlalchemy = "^2.0.30"
+uvicorn = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# [virtualenvs]
+# in-project = true
+
+[tool.pyright]
+venvPath = "/home/phil/.cache/pypoetry/virtualenvs"
+venv = "receipt-tracking-0fQ4zlGl-py3.12"

@@ -1,0 +1,119 @@
+#+title: Plan for this interview
+
+Have to p much build a backend to solve some problem
+
+Need...
+- IDE of choice
+- database
+- packaging
+  + docker, tomcat, static binary, etc.
+- web framework, sdks, etc.
+- starter kits
+
+* Project ideas
+should involve:
+- api endpoints
+- pulling and storing in database
+** projects
+- *receipt tracking*
+
+** receipt tracking
+Tracking receipt history in a store
+
+There are Customers
+There are goods with prices
+Each customer has a list of things they have bought
+
+
+* Tech stack i gonna use
+fast api
+sqlalchemy
+
+* What i gonna do
+- i thinking python to make boiler plate p fast
+- need to choose some database
+- need to figure out how to package things
+  + prolly docker
+
+* Setting up
+gonna use
+- poetry
+** Poetry setup
+#+begin_src python
+poetry new <name>
+
+# depends
+poetry add fastapi
+poetry add sqlalchemy
+poetry add uvicorn
+
+# running with vritual env
+poetry run <...>
+poetry run python
+poetry run uvicorn main:app --reload
+#+end_src
+
+** Code setup
+The main landing file:
+(where endpoints gonna start)
+MAIN:
+#+begin_src python
+# main.py in project root
+#!/usr/bin/env python3
+
+from fastapi import FastAPI, HTTPException
+from sqlalchemy import create_engine
+from src.models import SampleArgs, Output
+
+app = FastAPI()
+
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.post("/post", status_code=201)
+def post_endpoint():
+    # ...
+    return Output(output=3)
+
+
+@app.get("/get")
+def get_endpoint(args: SampleArgs):
+    # ...
+    return Output(output=3)
+#+end_src
+some models for types
+#+begin_src python
+# in src/models.py
+#!/usr/bin/env python3
+
+
+import datetime
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import Optional
+
+
+class SampleArgs(BaseModel):
+    """An example arguement"""
+
+    arg: Optional[int]
+
+
+class Output(BaseModel):
+    """Example solution"""
+
+    output: int
+#+end_src
+
+** Pyright fight
+DO
+poetry env info
+THen set the pyproject.toml to that..
+#+begin_src toml
+[tool.pyright]
+venvPath = "/home/phil/.cache/pypoetry/virtualenvs"
+venv = "receipt-tracking-0fQ4zlGl-py3.12"
+#+end_src
